@@ -4,11 +4,11 @@
   "description": "learning node js for begineer",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "dev": "nodemon  /index.js"
   },
   "author": "Abhay Raj",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "nodemon": "^3.1.0"
   }
 }
