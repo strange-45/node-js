@@ -4,7 +4,7 @@
   "description": "learning node js for begineer",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon  /index.js"
+    "dev": "nodemon  ./index.js"
   },
   "author": "Abhay Raj",
   "license": "ISC",
