@@ -1,18 +1,19 @@
-// const http = require("http");
-// http.createServer((req, res) => {
-//     res.writeHead(200,{'content-Type':'application\json'});
-//     res.write(JSON.stringify({name:'Rohit Sharma',email:'rohitsharma@gmail.com'}));
-//     res.end()
-// }).listen(5000);
+const http = require("http");
+http.createServer((req, res) => {
+    res.writeHead(200,{'content-Type':'application\json'});
+    res.write(JSON.stringify({name:'Rohit Sharma',email:'rohitsharma@gmail.com'}));
+    res.end()
+}).listen(5000);
 
 
 const fs=require('fs')
+const url=require('url')
 
-const path=require('path')
-const os=require('os')
+// const path=require('path')
+// const os=require('os')
 
 
-console.log(os.cpus().length);
+// console.log(os.cpus().length);
 
 // const dirPath=path.join(__dirname,'file')
 
@@ -58,3 +59,25 @@ console.log(os.cpus().length);
 
 // const result=fs.readFileSync("test.txt","utf-8")
 // console.log(result);
+
+
+const myServer=http.createServer((req,res)=>{
+    if (req.url==='/favicon.ico') {
+        return res.end()
+    }
+    const log=`${Date.now()}:${req.url} New Req Received`
+    const myUrl=url.parse(req.url)
+    console.log(myUrl);
+    fs.appendFile('log.txt',log,(error,data)=>{
+        switch (req.url) {
+            case '/':
+                res.end('HomePage')
+                break;
+            case '/abpot':
+                res.eventNames("I am Abhay Raj")
+                break
+            default:
+                break;
+        }
+    })
+})
